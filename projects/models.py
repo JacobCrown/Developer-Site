@@ -1,6 +1,6 @@
-from tkinter import CASCADE
 from django.db import models
 import uuid
+
 
 class Project(models.Model):
     title = models.CharField(max_length=200)
@@ -23,7 +23,7 @@ class Project(models.Model):
         return self.title
 
 
-class Reviev(models.Model):
+class Review(models.Model):
     VOTE_TYPE = (
         ('up', 'Up vote'),
         ('down', 'Down vote'),
