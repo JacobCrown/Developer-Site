@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model
 import uuid
 
 
+
+
 class Profile(models.Model):
     user = models.OneToOneField(
         get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
@@ -28,7 +30,7 @@ class Profile(models.Model):
         )
 
     def __str__(self):
-        return str(self.user.username)
+        return str(self.username)
 
         
 class Skill(models.Model):
