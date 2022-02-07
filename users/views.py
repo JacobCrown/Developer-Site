@@ -3,9 +3,11 @@ from django.contrib.auth import login, authenticate, get_user_model, logout
 from django.contrib import messages
 
 from .models import Profile
+from .forms import CustomUserCreationForm
 
 
 def login_user(request):
+    page = 'login'
 
     if request.user.is_authenticated:
         return redirect('profiles')    
@@ -34,6 +36,30 @@ def logout_user(request):
     logout(request)
     messages.error(request, 'User was succesfully logged out')
     return redirect('login')
+
+    
+def register_user(request):
+    page = 'register'
+    form = CustomUserCreationForm()
+
+    if request.method == 'POST': 
+        form = CustomUserCreationForm(request.POST)    
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+
+            messages.success(request, 'Account Created Succesfully')
+
+            login(request, user)
+            return redirect('profiles')
+
+        else: 
+            messages.success(request, 'An error has occurred during registretion')
+
+
+    context = {'page': page, 'form': form}
+    return render(request, 'users/login_register.html', context)
 
 
 def profiles(request):
