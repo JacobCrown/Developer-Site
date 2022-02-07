@@ -10,3 +10,10 @@ class CustomUserCreationForm(UserCreationForm):
         labels = {
             'first_name': 'Name',
         }
+
+    
+    def __init__(self, *args, **kwargs):
+        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+
+        for key, value in self.fields.items():
+            self.fields[key].widget.attrs.update({'class': 'input'})
