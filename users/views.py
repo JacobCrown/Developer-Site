@@ -68,8 +68,8 @@ def profiles(request):
     profiles, search_query = search_profiles(request)
     custom_range, profiles = paginate_profiles(request, profiles, 3)
 
-    print('custom range, profiles - ', custom_range, profiles)
-    print('has other pages - ', profiles.has_other_pages())
+    # print('custom range, profiles - ', custom_range, profiles)
+    # print('has other pages - ', profiles.has_other_pages())
 
     context = {'profiles': profiles, 'search_query': search_query,
                'custom_range': custom_range}

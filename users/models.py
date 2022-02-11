@@ -33,7 +33,15 @@ class Profile(models.Model):
         return str(self.username)
 
     class Meta:
-        ordering = ['-created']
+        ordering = ['created']
+
+    @property
+    def image_URL(self):
+        try: 
+            url = self.profile_image.url
+        except:
+            url = ''
+        return url
 
         
 class Skill(models.Model):
