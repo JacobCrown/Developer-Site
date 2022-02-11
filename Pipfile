@@ -8,6 +8,8 @@ django = "~=3.2.4"
 pillow = "*"
 whitenoise = "*"
 environs = {version = "==8.0.0", extras = ["django"]}
+djangorestframework = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 
